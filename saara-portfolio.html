@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Saara Kauser — CS Undergrad · AI/ML · Builder</title>
+<meta name="description" content="Portfolio of Saara Kauser Shaik — CS undergrad, AI/ML builder, and competitive programmer." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root{
+    --bg:#0a0a0a; --surface:#141414; --border:#1f1f1f;
+    --fg:#fafafa; --muted:#8a8a8a; --accent:#00D4FF;
+    --accent-foreground:#0a0a0a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--fg);
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.5;
+  }
+  a{color:inherit;text-decoration:none}
+  .font-display{font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:-0.02em}
+  .accent{color:var(--accent)}
+  .muted{color:var(--muted)}
+  .container{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+  .narrow{max-width:56rem;margin:0 auto;padding:0 1.5rem}
+  .tight{max-width:48rem;margin:0 auto;padding:0 1.5rem}
+
+  /* nav */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;backdrop-filter:blur(12px);background:rgba(10,10,10,0.7);border-bottom:1px solid var(--border)}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;max-width:72rem;margin:0 auto}
+  nav ul{display:none;gap:2rem;list-style:none;font-size:.875rem;color:var(--muted)}
+  nav ul a:hover{color:var(--fg)}
+  nav .brand{font-size:.875rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+  nav .gh{color:var(--muted);transition:color .2s}
+  nav .gh:hover{color:var(--accent)}
+  @media(min-width:768px){nav ul{display:flex}}
+
+  /* sections */
+  section{padding:8rem 1.5rem;border-top:1px solid var(--border)}
+  section:first-of-type{border-top:0}
+  .kicker{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+  h2.h{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.02em;line-height:1.1}
+
+  /* hero */
+  #hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:0;padding-bottom:0}
+  #hero .bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+  #hero .ring{position:absolute;border-radius:9999px;border:1px solid rgba(0,212,255,.1);animation:float 22s ease-in-out infinite}
+  #hero .ring.a{width:500px;height:500px;top:25%;left:-128px}
+  #hero .ring.b{width:400px;height:400px;bottom:40px;right:0;border-color:rgba(0,212,255,.05);animation-delay:-10s}
+  #hero .dot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:9999px;background:rgba(0,212,255,.4);filter:blur(2px)}
+  #hero .wrap{position:relative;max-width:72rem;margin:0 auto;width:100%;padding:8rem 0 5rem}
+  #hero h1{font-family:'DM Serif Display',serif;font-size:clamp(3.5rem,12vw,11rem);line-height:.95;letter-spacing:-.03em}
+  #hero .sub{margin-top:2rem;font-size:1.125rem;color:var(--muted);max-width:36rem}
+  @media(min-width:768px){#hero .sub{font-size:1.25rem}}
+  .btns{margin-top:3rem;display:flex;flex-wrap:wrap;gap:1rem}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 1.5rem;border-radius:9999px;font-weight:500;font-size:.875rem;transition:all .2s}
+  .btn-primary{background:var(--accent);color:var(--accent-foreground)}
+  .btn-primary:hover{opacity:.9}
+  .btn-ghost{border:1px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--accent)}
+
+  /* about */
+  .about-grid{display:grid;gap:4rem;align-items:start}
+  .about-grid p.lead{font-size:1.25rem;line-height:1.6}
+  @media(min-width:768px){.about-grid{grid-template-columns:1fr 1fr;gap:4rem}.about-grid p.lead{font-size:1.5rem}}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:.5rem;padding:1.5rem;text-align:center;transition:transform .2s,border-color .2s}
+  .stat:hover{transform:translateY(-2px);border-color:rgba(0,212,255,.4)}
+  .stat .v{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--accent)}
+  @media(min-width:768px){.stat .v{font-size:2.25rem}}
+  .stat .l{margin-top:.5rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+
+  /* skills */
+  .skills{display:grid;gap:1rem;grid-template-columns:1fr}
+  @media(min-width:640px){.skills{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1024px){.skills{grid-template-columns:repeat(4,1fr)}}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:.75rem;padding:1.5rem;transition:transform .2s,border-color .2s}
+  .card:hover{transform:translateY(-2px);border-color:rgba(0,212,255,.4)}
+  .card i{color:var(--accent);margin-bottom:1.5rem;display:block}
+  .card h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:1rem}
+  .card ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+
+  /* experience */
+  .timeline{position:relative;padding-left:2rem}
+  @media(min-width:768px){.timeline{padding-left:3rem}}
+  .timeline::before{content:"";position:absolute;left:0;top:.5rem;bottom:.5rem;width:1px;background:var(--border)}
+  .tl-item{position:relative;margin-bottom:3rem}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-2rem;top:.5rem;width:12px;height:12px;border-radius:9999px;background:var(--accent);box-shadow:0 0 20px rgba(0,212,255,.6)}
+  @media(min-width:768px){.tl-item::before{left:-3rem}}
+  .tl-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .75rem}
+  .tl-head h3{font-size:1.25rem;font-weight:500}
+  @media(min-width:768px){.tl-head h3{font-size:1.5rem}}
+  .tl-date{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:.5rem}
+  .tl-detail{margin-top:1rem;color:var(--muted);max-width:36rem}
+
+  /* projects */
+  .projects{display:grid;gap:1.5rem;grid-template-columns:1fr}
+  @media(min-width:768px){.projects{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1024px){.projects{grid-template-columns:repeat(3,1fr)}}
+  .proj{background:var(--surface);border:1px solid var(--border);border-radius:.75rem;padding:2rem;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+  .proj:hover{transform:translateY(-4px);border-color:rgba(0,212,255,.5)}
+  .proj-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem}
+  .proj-head h3{font-family:'DM Serif Display',serif;font-size:1.5rem}
+  .proj p{color:var(--muted);font-size:.875rem;flex:1;line-height:1.6}
+  .tags{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem}
+  .tag{font-size:.75rem;padding:.25rem .625rem;border:1px solid var(--border);border-radius:9999px;color:var(--muted)}
+
+  /* cp */
+  .cp{display:grid;gap:1rem;grid-template-columns:1fr}
+  @media(min-width:768px){.cp{grid-template-columns:repeat(3,1fr)}}
+  .cp .card .row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+  .cp .card .v{font-family:'DM Serif Display',serif;font-size:1.875rem}
+  .cp .card p{color:var(--muted);font-size:.875rem;margin-top:.5rem}
+
+  /* contact */
+  #contact{text-align:center}
+  #contact h2{font-family:'DM Serif Display',serif;font-size:clamp(3rem,7vw,5rem);line-height:1.1;letter-spacing:-.02em}
+  .icon-btns{margin-top:3rem;display:flex;justify-content:center;gap:1rem}
+  .icon-btn{width:3.5rem;height:3.5rem;display:flex;align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--border);border-radius:9999px;transition:all .2s}
+  .icon-btn:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 24px rgba(0,212,255,.3)}
+  footer{max-width:72rem;margin:6rem auto 0;padding-top:2rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:1rem;align-items:center;justify-content:space-between;font-size:.75rem;color:var(--muted)}
+  @media(min-width:640px){footer{flex-direction:row}}
+
+  /* reveal */
+  [data-reveal]{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+  [data-reveal].in{opacity:1;transform:none}
+
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-30px) rotate(180deg)}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#hero" class="brand">SK<span class="accent">.</span></a>
+    <ul>
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+    <a class="gh" href="https://github.com/saara-sana" target="_blank" rel="noreferrer" aria-label="GitHub"><i data-lucide="github" style="width:18px;height:18px"></i></a>
+  </nav>
+</header>
+
+<section id="hero">
+  <div class="bg">
+    <div class="ring a"></div>
+    <div class="ring b"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="wrap container" style="padding-left:0;padding-right:0">
+    <p class="kicker" data-reveal>Portfolio — 2025</p>
+    <h1 data-reveal>Saara<br/><span class="accent">Kauser</span></h1>
+    <p class="sub" data-reveal>CS undergrad <span class="accent">·</span> AI/ML <span class="accent">·</span> Builder</p>
+    <div class="btns" data-reveal>
+      <a href="#projects" class="btn btn-primary">View Projects <i data-lucide="arrow-right" style="width:16px;height:16px"></i></a>
+      <a href="Saara_Kauser_Resume.pdf" download class="btn btn-ghost"><i data-lucide="download" style="width:16px;height:16px"></i> Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about-grid">
+    <div data-reveal>
+      <p class="kicker">About</p>
+      <p class="lead">I'm a B.Tech CSE (AI &amp; ML) student at SASI Institute of Technology, currently maintaining a CGPA of <span class="accent">9.44</span>. I build things at the intersection of language models, full-stack development, and intelligent systems.</p>
+    </div>
+    <div class="stats" data-reveal>
+      <div class="stat"><div class="v">500+</div><div class="l">DSA Problems</div></div>
+      <div class="stat"><div class="v">9.44</div><div class="l">CGPA</div></div>
+      <div class="stat"><div class="v">1200</div><div class="l">CodeChef</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div data-reveal style="margin-bottom:4rem">
+      <p class="kicker">Skills</p>
+      <h2 class="h">Tools of the trade</h2>
+    </div>
+    <div class="skills">
+      <div class="card" data-reveal><i data-lucide="code-2"></i><h3>Languages</h3><ul><li>C++</li><li>Python</li><li>Java</li><li>JavaScript</li></ul></div>
+      <div class="card" data-reveal><i data-lucide="boxes"></i><h3>Frameworks</h3><ul><li>Django</li><li>Node.js</li><li>Express.js</li><li>React</li></ul></div>
+      <div class="card" data-reveal><i data-lucide="cpu"></i><h3>Core CS</h3><ul><li>DSA</li><li>OOP</li><li>DBMS</li></ul></div>
+      <div class="card" data-reveal><i data-lucide="wrench"></i><h3>Tools</h3><ul><li>Git</li><li>GitHub</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="narrow">
+    <div data-reveal style="margin-bottom:4rem">
+      <p class="kicker">Experience</p>
+      <h2 class="h">Where I've shown up</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item" data-reveal>
+        <div class="tl-head"><h3>DSA, AWS &amp; DevOps Training</h3><span class="accent">·</span><span class="muted">NIT Tiruchirappalli — Online Internship Program</span></div>
+        <p class="tl-date">May 2026</p>
+        <p class="tl-detail">Worked with CI/CD pipelines, version control, and scalable deployment practices. Built foundations in AWS cloud infrastructure, deployment workflows, and DevOps automation.</p>
+      </div>
+      <div class="tl-item" data-reveal>
+        <div class="tl-head"><h3>Open Source Contributor</h3><span class="accent">·</span><span class="muted">GirlScript Summer of Code</span></div>
+        <p class="tl-date">Aug 2025</p>
+        <p class="tl-detail">Contributed to open-source projects via pull requests and issue resolution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div data-reveal style="margin-bottom:4rem">
+      <p class="kicker">Projects</p>
+      <h2 class="h">Selected work</h2>
+    </div>
+    <div class="projects">
+      <a class="proj" href="https://github.com/saara-sana/Campus_Connect" target="_blank" rel="noreferrer" data-reveal>
+        <div class="proj-head"><h3>CampusConnect</h3><i data-lucide="github" style="width:20px;height:20px;color:var(--muted)"></i></div>
+        <p>RAG-based academic platform with citation-backed semantic search across course materials.</p>
+        <div class="tags"><span class="tag">Django</span><span class="tag">LLMs</span><span class="tag">Vector DB</span><span class="tag">RAG</span></div>
+      </a>
+      <a class="proj" href="https://github.com/saara-sana/spotify-clone-extended" target="_blank" rel="noreferrer" data-reveal>
+        <div class="proj-head"><h3>Spotify Clone</h3><i data-lucide="github" style="width:20px;height:20px;color:var(--muted)"></i></div>
+        <p>Full-stack MERN music streaming app with JWT auth and RESTful APIs.</p>
+        <div class="tags"><span class="tag">MongoDB</span><span class="tag">Express</span><span class="tag">React</span><span class="tag">Node.js</span></div>
+      </a>
+      <a class="proj" href="https://github.com/saara-sana/smart-waste-management-hadoop" target="_blank" rel="noreferrer" data-reveal>
+        <div class="proj-head"><h3>Smart Waste Analytics</h3><i data-lucide="github" style="width:20px;height:20px;color:var(--muted)"></i></div>
+        <p>Hadoop/HDFS/Hive IoT analytics pipeline producing waste trend reports.</p>
+        <div class="tags"><span class="tag">Hadoop</span><span class="tag">HDFS</span><span class="tag">Hive</span><span class="tag">IoT</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="cp">
+  <div class="container">
+    <div data-reveal style="margin-bottom:4rem">
+      <p class="kicker">Competitive Programming</p>
+      <h2 class="h">Built through reps</h2>
+    </div>
+    <div class="cp">
+      <a class="card" href="https://leetcode.com/u/24K61A6143/" target="_blank" rel="noreferrer" data-reveal>
+        <div class="row"><i data-lucide="trophy" style="width:20px;height:20px"></i><i data-lucide="external-link" style="width:16px;height:16px;color:var(--muted)"></i></div>
+        <div class="v">LeetCode</div><p>500+ problems solved</p>
+      </a>
+      <div class="card" data-reveal>
+        <i data-lucide="trophy"></i>
+        <div class="v">CodeChef</div><p>Rating 1200</p>
+      </div>
+      <div class="card" data-reveal>
+        <i data-lucide="code-2"></i>
+        <div class="v">Topics</div><p>Graphs · DP · Trees · Greedy</p>
+      </div>
+    </div>
+    <div style="margin-top:2rem;font-size:.875rem;color:var(--muted)" data-reveal>
+      More on <a href="https://github.com/saara-sana" target="_blank" rel="noreferrer" class="accent" style="text-decoration:underline">GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="tight">
+    <p class="kicker" data-reveal>Contact</p>
+    <h2 data-reveal>Let's build<br/>something.</h2>
+    <p data-reveal style="margin-top:2rem;color:var(--muted)">Open to internships, collaborations, and interesting problems.</p>
+    <div class="icon-btns" data-reveal>
+      <a class="icon-btn" href="mailto:shaiksaarkauser@gmail.com" aria-label="Email"><i data-lucide="mail" style="width:18px;height:18px"></i></a>
+      <a class="icon-btn" href="https://github.com/saara-sana" target="_blank" rel="noreferrer" aria-label="GitHub"><i data-lucide="github" style="width:18px;height:18px"></i></a>
+      <a class="icon-btn" href="tel:+919701650867" aria-label="Phone"><i data-lucide="phone" style="width:18px;height:18px"></i></a>
+    </div>
+    <div data-reveal style="margin-top:2.5rem;font-size:.875rem;color:var(--muted)">
+      <p>shaiksaarkauser@gmail.com</p>
+      <p>+91 97016 50867</p>
+    </div>
+  </div>
+  <footer class="container">
+    <p>Built by Saara Kauser</p>
+    <p>© <span id="yr"></span></p>
+  </footer>
+</section>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  lucide.createIcons();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
